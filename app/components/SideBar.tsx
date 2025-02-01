@@ -23,7 +23,7 @@ function SideBar({
       <div className="hidden w-0 lg:w-full lg:block lg:col-span-1 bg-[#273f2bb3]"></div>
       <div className="xl:col-span-2 lg:col-span-3 bg-[#ebe0ce] px-4 md:px-16 lg:py-8 flex flex-col gap-12 items-center w-full">
         <div className="flex justify-between gap-2 md:gap-0 items-center py-6 border-b border-gray-500 w-[90%] fixed lg:relative lg:w-full lg:left-0 top-0 left-[5%] bg-[#ebe0ce]">
-          <div className="flex gap-2 md:gap-6 min-w-[70%] md:w-[62.5%] lg:w-1/2 justify-between lg:justify-start items-center">
+          <div className="flex gap-2 md:gap-6 lg:w-1/2 justify-between lg:justify-start items-center">
             <div
               className="relative cursor-pointer"
               onClick={() => {
@@ -82,7 +82,7 @@ function SideBar({
               )}
             </div>
             <div
-              className="relative cursor-pointer"
+              className="relative cursor-pointer hidden lg:block"
               onClick={() => {
                 setSelect2((v) => !v);
                 setSelect1(false);
@@ -156,6 +156,81 @@ function SideBar({
                 />
               )}
             </div>
+          </div>
+          <div
+            className="relative cursor-pointer lg:hidden block"
+            onClick={() => {
+              setSelect2((v) => !v);
+              setSelect1(false);
+            }}
+          >
+            <div
+              id=""
+              tabIndex={0}
+              className="px-3 hover:bg-black/10 text-[18px] border border-black border-solid focus-visible:outline-[#b2e6bb] focus-visible:outline focus-visible:outline-2 outline-offset-2 pr-6 cursor-pointer py-2 rounded-[5rem] z-20 bg-transparent appearance-none"
+            >
+              <p className="pr-4">{language}</p>
+            </div>
+            {select2 && (
+              <ul className="bg-white rounded-md mt-2 text-[20px] absolute w-[125px]">
+                <li
+                  onClick={() => {
+                    setLanguage("English");
+                    setToggle(false);
+                  }}
+                  className="border-b border-gray-400 px-3 py-3 hover:bg-[#f3ece2] rounded-tl-md rounded-tr-md"
+                >
+                  English
+                </li>
+                <li
+                  onClick={() => {
+                    setLanguage("Francais");
+                    setToggle(false);
+                  }}
+                  className="px-3 py-3 hover:bg-[#f3ece2]"
+                >
+                  Francais
+                </li>
+                <li
+                  onClick={() => {
+                    setLanguage("Deutsch");
+                    setToggle(false);
+                  }}
+                  className="border-t border-gray-400 px-3 py-3 hover:bg-[#f3ece2] rounded-bl-md rounded-br-md"
+                >
+                  Deutsch
+                </li>
+                <li
+                  onClick={() => {
+                    setLanguage("Italiano");
+                    setToggle(false);
+                  }}
+                  className="border-t border-gray-400 px-3 py-3 hover:bg-[#f3ece2] rounded-bl-md rounded-br-md"
+                >
+                  Italiano
+                </li>
+                <li
+                  onClick={() => {
+                    setLanguage("Espanol");
+                    setToggle(false);
+                  }}
+                  className="border-t border-gray-400 px-3 py-3 hover:bg-[#f3ece2] rounded-bl-md rounded-br-md"
+                >
+                  Espanol
+                </li>
+              </ul>
+            )}
+            {select2 ? (
+              <MdOutlineKeyboardArrowUp
+                className="absolute top-3 right-2 z-10"
+                size="1.5rem"
+              />
+            ) : (
+              <MdOutlineKeyboardArrowDown
+                className="absolute top-3 right-2 z-10"
+                size="1.5rem"
+              />
+            )}
           </div>
           <div className="flex gap-6 items-center">
             <button className="rounded-[5rem] hidden lg:block px-4 py-1 bg-black text-[#ebe0ce] text-[18px]">

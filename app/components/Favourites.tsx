@@ -20,18 +20,22 @@ const responsive = {
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 768, min: 320 },
+    breakpoint: { max: 768, min: 501 },
+    items: 2,
+  },
+  smallmobile: {
+    breakpoint: { max: 500, min: 320 },
     items: 1,
   },
 };
 
 function Favourites() {
   return (
-    <div className="mt-[100px] px-4 md:px-[5rem] xl:pl-40 lg:pl-[7rem] h-[100vh] lg:h-[130vh] relative">
+    <div className="mt-[100px] px-4 md:px-[5rem] xl:pl-40 lg:pl-[7rem] h-[60rem] relative mb-[5rem]">
       <p className="lg:text-[60px] text-[45px] leading-[50px] mb-8">
         Our Favourites
       </p>
-      <div className="lg:h-[100vh] h-[95vh]">
+      <div className="h-[50rem]">
         <Carousel
           swipeable={true}
           draggable={true}
@@ -44,14 +48,14 @@ function Favourites() {
           transitionDuration={1000}
           containerClass="carousel-container-custom-two"
           renderDotsOutside={false}
-          removeArrowOnDeviceType={["mobile"]}
+          removeArrowOnDeviceType={["smallmobile", "mobile"]}
         >
-          <div className="flex h-[70vh] lg:h-[90vh] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
+          <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
               src="/images/wilde_ls_1.webp"
               alt="Room 2"
-              className="object-cover min-h-[50vh] lg:min-h-[70vh] w-full rounded-md"
+              className="object-cover h-3/5 w-full rounded-md"
             />
             <div className="relative">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
@@ -63,12 +67,12 @@ function Favourites() {
               </p>
             </div>
           </div>
-          <div className="flex h-[70vh] lg:h-[90vh] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
+          <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
               src="/images/wilde_ls_23a.webp"
               alt="Room 2"
-              className="object-cover min-h-[50vh] lg:min-h-[70vh] w-full rounded-md"
+              className="object-cover h-3/5 w-full rounded-md"
             />
             <div className="relative">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
@@ -80,12 +84,12 @@ function Favourites() {
               </p>
             </div>
           </div>
-          <div className="flex h-[70vh] lg:h-[90vh] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
+          <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
               src="/images/wilde_ls_0.webp"
               alt="Room 2"
-              className="object-cover min-h-[50vh] lg:min-h-[70vh] w-full rounded-md"
+              className="object-cover h-3/5 w-full rounded-md"
             />
             <div className="relative">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
@@ -97,12 +101,12 @@ function Favourites() {
               </p>
             </div>
           </div>
-          <div className="flex h-[70vh] lg:h-[90vh] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
+          <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
               src="/images/wilde_ls_1.webp"
               alt="Room 2"
-              className="object-cover min-h-[50vh] lg:min-h-[70vh] w-full rounded-md"
+              className="object-cover h-3/5 w-full rounded-md"
             />
             <div className="relative">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
@@ -114,12 +118,12 @@ function Favourites() {
               </p>
             </div>
           </div>
-          <div className="flex h-[70vh] lg:h-[90vh] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
+          <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
               src="/images/wilde_ls_0.webp"
               alt="Room 2"
-              className="object-cover min-h-[50vh] lg:min-h-[70vh] w-full rounded-md"
+              className="object-cover h-3/5 w-full rounded-md"
             />
             <div className="relative">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
@@ -131,12 +135,12 @@ function Favourites() {
               </p>
             </div>
           </div>
-          <div className="flex h-[70vh] lg:h-[90vh] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
+          <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
               src="/images/wilde_ls_23a.webp"
               alt="Room 2"
-              className="object-cover min-h-[50vh] lg:min-h-[70vh] w-full rounded-md"
+              className="object-cover h-3/5 w-full rounded-md"
             />
             <div className="relative">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>

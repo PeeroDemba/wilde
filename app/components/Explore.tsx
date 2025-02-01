@@ -26,7 +26,7 @@ function Explore() {
       <div className="flex flex-col gap-20">
         <div className="xl:px-40 md:px-[5rem] px-4 lg:px-[7rem] flex flex-col gap-4">
           <p className="italic text-[24px] lg:text-[36px]">Explore Wilde</p>
-          <p className="lg:text-[70px] text-[50px] leading-[55px]">
+          <p className="lg:text-[70px] text-[50px] leading-[55px] lg:leading-[75px]">
             Apartment freedom, hotel comforts{" "}
           </p>
           <p className="text-[24px]">
@@ -41,7 +41,7 @@ function Explore() {
               className="w-24 lg:w-full h-full"
             />
           </div>
-          <div className="flex flex-col justify-between gap-12 md:gap-12 md:gap-24">
+          <div className="flex flex-col justify-between gap-12 md:gap-24">
             <p className="italic text-[1.5rem]">Flexible booking</p>
             <div className="border-2 border-black"></div>
           </div>

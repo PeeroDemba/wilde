@@ -92,16 +92,7 @@ body {
 
 .carousel-container-custom-two {
   overflow: visible !important;
-  height: 75vh !important;
   align-items: start !important;
-}
-
-@media (min-width: 1024px) {
-  .carousel-container-custom-two {
-    overflow: visible !important;
-    height: 105vh !important;
-    align-items: start !important;
-  }
 }
 
 .carousel-container-custom-two .react-multiple-carousel__arrow--right {
@@ -115,13 +106,6 @@ body {
 .carousel-container-custom-three {
   overflow: visible !important;
   align-items: start !important;
-}
-
-@media (min-width: 1024px) {
-  .carousel-container-custom-three {
-    overflow: visible !important;
-    align-items: start !important;
-  }
 }
 
 .carousel-container-custom-three .react-multiple-carousel__arrow--right {

@@ -53,7 +53,7 @@ export default function Home() {
           alt="Chat Box"
           className="fixed top-[calc((110vh-60px)/2)] right-0 z-20 lg:w-[60px] lg:h-[60px] h-[40px] w-[40px]"
         />
-        <div className="fixed top-[calc((100vh-60px)/2)] group-hover:cursor-pointer right-0 h-[60px] z-30 rounded-tl-2xl rounded-bl-2xl w-[60px] group-hover:bg-black/25"></div>
+        <div className="fixed top-[calc((110vh-60px)/2)] group-hover:cursor-pointer right-0 h-[60px] z-30 rounded-tl-2xl rounded-bl-2xl w-[60px] group-hover:bg-black/25"></div>
       </div>
       <header ref={ref} className="bg-[#ebe0ce] relative">
         <nav

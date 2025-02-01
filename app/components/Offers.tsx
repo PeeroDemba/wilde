@@ -19,18 +19,22 @@ const responsive = {
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 768, min: 320 },
+    breakpoint: { max: 768, min: 501 },
+    items: 2,
+  },
+  smallmobile: {
+    breakpoint: { max: 500, min: 320 },
     items: 1,
   },
 };
 
 function Offers() {
   return (
-    <div className="xl:pl-40 lg:px-[7rem] pl-4 md:pl-16 mt-4 h-[40rem] mb-[10rem] relative">
+    <div className="xl:pl-40 lg:px-[7rem] pl-4 md:pl-16 mt-4 h-[45rem] mb-[10rem] relative">
       <p className="text-[20px] mb-8">
         We reserve the best rates for our friends, naturally
       </p>
-      <div className="h-[40rem]  pl-8 md:pl-24 lg:pl-0">
+      <div className="h-[45rem] pl-8 md:pl-24 lg:pl-0">
         <Carousel
           swipeable={true}
           draggable={true}
@@ -43,9 +47,9 @@ function Offers() {
           transitionDuration={1000}
           containerClass="carousel-container-custom-three"
           renderDotsOutside={false}
-          removeArrowOnDeviceType={["mobile"]}
+          removeArrowOnDeviceType={["smallmobile", "mobile"]}
         >
-          <div className="flex max-h-[80vh] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
+          <div className="flex h-[35rem] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
             <div className="relative flex-col gap-4 flex top-0 left-0 h-[85%] w-full group-hover:bg-[#ebe0ce62] bg-transparent">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#ebe0ce62] bg-transparent"></div>
               <p className="italic text-[20px]">An Offer Most Exquisite</p>
@@ -75,7 +79,7 @@ function Offers() {
               </button>
             </div>
           </div>
-          <div className="flex max-h-[80vh] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
+          <div className="flex h-[35rem] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
             <div className="relative flex-col gap-4 flex top-0 left-0 h-[85%] w-full group-hover:bg-[#ebe0ce62] bg-transparent">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#ebe0ce62] bg-transparent"></div>
               <p className="italic text-[20px]">An Offer Most Exquisite</p>
@@ -106,7 +110,7 @@ function Offers() {
               </button>
             </div>
           </div>
-          <div className="flex max-h-[80vh] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
+          <div className="flex h-[35rem] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
             <div className="relative flex-col gap-4 flex top-0 left-0 h-[85%] w-full group-hover:bg-[#ebe0ce62] bg-transparent">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#ebe0ce62] bg-transparent"></div>
               <p className="italic text-[20px]">An Offer Most Exquisite</p>
@@ -137,7 +141,7 @@ function Offers() {
               </button>
             </div>
           </div>
-          <div className="flex max-h-[80vh] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
+          <div className="flex h-[35rem] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
             <div className="relative flex-col gap-4 flex top-0 left-0 h-[85%] w-full group-hover:bg-[#ebe0ce62] bg-transparent">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#ebe0ce62] bg-transparent"></div>
               <p className="italic text-[20px]">An Offer Most Exquisite</p>
@@ -168,7 +172,7 @@ function Offers() {
               </button>
             </div>
           </div>
-          <div className="flex max-h-[80vh] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
+          <div className="flex h-[35rem] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
             <div className="relative flex-col gap-4 flex top-0 left-0 h-[85%] w-full group-hover:bg-[#ebe0ce62] bg-transparent">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#ebe0ce62] bg-transparent"></div>
               <p className="italic text-[20px]">An Offer Most Exquisite</p>
@@ -199,7 +203,7 @@ function Offers() {
               </button>
             </div>
           </div>
-          <div className="flex max-h-[80vh] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
+          <div className="flex h-[35rem] justify-start group flex-col gap-4 cursor-pointer mr-8 text-center">
             <div className="relative flex-col gap-4 flex top-0 left-0 h-[85%] w-full group-hover:bg-[#ebe0ce62] bg-transparent">
               <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#ebe0ce62] bg-transparent"></div>
               <p className="italic text-[20px]">An Offer Most Exquisite</p>
