@@ -17,8 +17,7 @@ function Membership() {
           <p className="italic text-[24px]">Stay Smarter</p>
           <p className="lg:text-[70px] text-[55px] leading-[60px] lg:leading-[75px]">
             A smart and simple{" "}
-            <span className="underline underline-offset-[18px] lg:underline-offset-[24px]">
-              {" "}
+            <span className="bg-[url('/images/wilde-underline.svg')] bg-no-repeat bg-bottom">
               formula
             </span>
           </p>

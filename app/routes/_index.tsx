@@ -1,4 +1,9 @@
-import { RiMastercardLine, RiMenuFill, RiVisaLine } from "react-icons/ri";
+import {
+  RiArrowRightSLine,
+  RiMastercardLine,
+  RiMenuFill,
+  RiVisaLine,
+} from "react-icons/ri";
 import type { Route } from "./+types/_index";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -12,10 +17,13 @@ import { FaXTwitter } from "react-icons/fa6";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
+  MdOutlineLocationOn,
 } from "react-icons/md";
-import { GrAmex } from "react-icons/gr";
+import { GrAmex, GrSubtractCircle } from "react-icons/gr";
 import Search from "~/components/Search";
 import { useInView } from "react-intersection-observer";
+import { FiPlusCircle } from "react-icons/fi";
+import { data } from "../data.ts";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -31,6 +39,10 @@ export default function Home() {
   const [search, setSearch] = useState(false);
   const [select1, setSelect1] = useState(false);
   const [select2, setSelect2] = useState(false);
+  const [city, setCity] = useState(false);
+  const [aparthotel, setAparthotel] = useState(false);
+  const [date, setDate] = useState(false);
+  const [guests, setGuests] = useState(false);
   const [language, setLanguage] = useState("English");
   const [currency, setCurrency] = useState("EUR ($)");
   const { ref, inView } = useInView({
@@ -42,6 +54,7 @@ export default function Home() {
     initialInView: false,
   });
   const isBigScreen = useMediaQuery({ query: "(min-width: 1024px)" });
+  const open = city || aparthotel || date || guests;
 
   return (
     <div
@@ -82,9 +95,9 @@ export default function Home() {
         <div className="lg:grid lg:grid-cols-2 flex h-[65vh] lg:h-screen relative">
           <div className="lg:px-16 w-full md:px-0 bg-[url('/images/231012_wilde_staycity_outside_shots-with-couple_0179-1_final_web.webp')] lg:bg-none bg-no-repeat bg-center bg-cover">
             <div className="border-b lg:px-0 w-full px-4 md:px-6  border-[#bbb] h-full lg:backdrop-brightness-100 backdrop-brightness-[.6]">
-              <p className="lg:text-[90px] text-[#ebe0ce] lg:text-black text-[52.5px] leading-[57.5px] md:text-[60px] pt-20 md:pt-32 lg:leading-[100px] h-full">
+              <p className="lg:text-[80px] xl:text-[90px] text-[#ebe0ce] lg:text-black text-[52.5px] leading-[57.5px] md:text-[60px] pt-20 md:pt-32 lg:leading-[90px] xl:leading-[100px] h-full">
                 Life begins in{" "}
-                <span className="underline underline-offset-[16px] lg:underline-offset-[24px]">
+                <span className="bg-[url('/images/wilde-underline.svg')] bg-no-repeat bg-bottom">
                   London
                 </span>
               </p>
@@ -116,41 +129,350 @@ export default function Home() {
             <div className="h-full w-full bg-black/30"></div>
           </div>
         </div>
-        <div className="bg-white hidden h-[4.5rem] w-max absolute bottom-[25vh] left-[calc((100vw-915px)/2)] lg:grid grid-cols-5">
-          <button
-            type="button"
-            className="px-2 py-3 hover:bg-[#d8cbb6] cursor-pointer border-r border-[#999] focus-visible:border-2 focus-visible:border-black"
-          >
-            <p className="text-[#777]">CITY</p>
-            <p>London</p>
-          </button>
-          <button
-            type="button"
-            className="px-2 py-3 hover:bg-[#d8cbb6] cursor-pointer focus-visible:border-2 focus-visible:border-black"
-          >
-            <p className="text-[#777]">APARTHOTEL</p>
-            <p>Checkpoint Charlie</p>
-          </button>
-          <button
-            type="button"
-            className="px-2 py-3 hover:bg-[#d8cbb6] border-[#999]  border-l border-r cursor-pointer focus-visible:border-2 focus-visible:border-black"
-          >
-            <p className="text-[#777]">DATE</p>
-            <p>Check in - Check out</p>
-          </button>
-          <button
-            type="button"
-            className="px-2 hover:bg-[#d8cbb6] py-3 cursor-pointer focus-visible:border-2 focus-visible:border-black"
-          >
-            <p className="text-[#777]">GUESTS</p>
-            <p>1 guest, 1 apartment</p>
-          </button>
-          <button
-            type="button"
-            className="px-2 bg-black flex justify-center items-center text-[20px] py-3 cursor-pointer focus-visible:border-2 focus-visible:border-white"
-          >
-            <p className="text-white">SEARCH</p>
-          </button>
+        <div className="absolute top-[65vh] left-[calc((100vw-915px)/2)]">
+          <div className="bg-[#f3ece2] hidden w-[915px] h-[4.5rem] lg:grid grid-cols-5 mb-[0.05rem]">
+            <button
+              onClick={() => {
+                setCity((v) => !v);
+                setGuests(false);
+                setAparthotel(false);
+                setDate(false);
+              }}
+              type="button"
+              className={`px-2 py-3 ${
+                !open && "hover:bg-[#d8cbb6]"
+              } cursor-pointer border-r border-black/30 ${
+                !city && open && "bg-[#d8cbb6]"
+              } focus-visible:border-2 focus-visible:border-black/30`}
+            >
+              <p className="text-[#777]">CITY</p>
+              <p>London</p>
+            </button>
+            <button
+              onClick={() => {
+                setAparthotel((v) => !v);
+                setGuests(false);
+                setCity(false);
+                setDate(false);
+              }}
+              type="button"
+              className={`px-2 py-3 ${
+                !open && "hover:bg-[#d8cbb6]"
+              } cursor-pointer border-r border-black/30 ${
+                !aparthotel && open && "bg-[#d8cbb6]"
+              } focus-visible:border-2 focus-visible:border-black/30`}
+            >
+              <p className="text-[#777]">APARTHOTEL</p>
+              <p>Checkpoint Charlie</p>
+            </button>
+            <button
+              onClick={() => {
+                setDate((v) => !v);
+                setGuests(false);
+                setAparthotel(false);
+                setCity(false);
+              }}
+              type="button"
+              className={`px-2 py-3 ${
+                !open && "hover:bg-[#d8cbb6]"
+              } cursor-pointer border-r border-black/30 ${
+                !date && open && "bg-[#d8cbb6]"
+              } focus-visible:border-2 focus-visible:border-black/30`}
+            >
+              <p className="text-[#777]">DATE</p>
+              <p>Check in - Check out</p>
+            </button>
+            <button
+              onClick={() => {
+                setGuests((v) => !v);
+                setCity(false);
+                setAparthotel(false);
+                setDate(false);
+              }}
+              type="button"
+              className={`px-2 py-3 ${
+                !open && "hover:bg-[#d8cbb6]"
+              } cursor-pointer border-r border-black/30 ${
+                !guests && open && "bg-[#d8cbb6]"
+              } focus-visible:border-2 focus-visible:border-black/30`}
+            >
+              <p className="text-[#777]">GUESTS</p>
+              <p>1 guest, 1 apartment</p>
+            </button>
+            <button
+              type="button"
+              className="px-2 bg-black flex justify-center items-center text-[20px] py-3 cursor-pointer focus-visible:border-2 focus-visible:border-white"
+            >
+              <p className="text-white">SEARCH</p>
+            </button>
+          </div>
+          {city && (
+            <div className="bg-[#f3ece2] p-6 hidden lg:flex flex-col gap-4 w-max">
+              <p className="text-[28px]">Where to?</p>
+              <p className="italic">Locations that feed the soul</p>
+              <div className="grid grid-cols-2">
+                <div className="flex gap-3 items-center hover:opacity-50 cursor-pointer">
+                  <MdOutlineLocationOn
+                    size="1.5rem"
+                    className="text-[#273f2b]"
+                  />
+                  <p className="text-[36px]">Berlin</p>
+                  <RiArrowRightSLine size="2rem" className="text-[#b9cdbb]" />
+                </div>
+                <div className="flex gap-3 items-center hover:opacity-50 cursor-pointer">
+                  <MdOutlineLocationOn
+                    size="1.5rem"
+                    className="text-[#273f2b]"
+                  />
+                  <p className="text-[36px]">London</p>
+                  <RiArrowRightSLine size="2rem" className="text-[#b9cdbb]" />
+                </div>
+                <div className="flex gap-3 items-center hover:opacity-50 cursor-pointer">
+                  <MdOutlineLocationOn
+                    size="1.5rem"
+                    className="text-[#273f2b]"
+                  />
+                  <p className="text-[36px]">Edinburgh</p>
+                  <RiArrowRightSLine size="2rem" className="text-[#b9cdbb]" />
+                </div>
+                <div className="flex gap-3 items-center hover:opacity-50 cursor-pointer">
+                  <MdOutlineLocationOn
+                    size="1.5rem"
+                    className="text-[#273f2b]"
+                  />
+                  <p className="text-[36px]">Manchester</p>
+                  <RiArrowRightSLine size="2rem" className="text-[#b9cdbb]" />
+                </div>
+              </div>
+            </div>
+          )}
+          {aparthotel && (
+            <div className="bg-[#f3ece2] p-6 hidden lg:flex flex-col gap-4 w-max relative left-[11.25rem]">
+              <p className="text-[28px]">Where in London?</p>
+              <button
+                type="button"
+                className="rounded-[4px] hover:bg-[#273f2b]/70 py-[14px] px-24 bg-[#273f2b] text-[#f3ece2]"
+              >
+                ALL APARTHOTELS
+              </button>
+              <div className="flex flex-col">
+                <div className="flex gap-3 items-center hover:opacity-50 cursor-pointer border-b border-black/20 py-2">
+                  <RiArrowRightSLine size="2rem" className="text-[#b9cdbb]" />
+                  <p className="text-[18px]">Liverpool Street</p>
+                </div>
+                <div className="flex gap-3 items-center hover:opacity-50 cursor-pointer border-b border-black/20 py-2">
+                  <RiArrowRightSLine size="2rem" className="text-[#b9cdbb]" />
+                  <p className="text-[18px]">Paddington</p>
+                </div>
+                <div className="flex gap-3 items-center hover:opacity-50 cursor-pointer border-b border-black/20 py-2">
+                  <RiArrowRightSLine size="2rem" className="text-[#b9cdbb]" />
+                  <p className="text-[18px]">Aldgate Tower Bridge</p>
+                </div>
+                <div className="flex gap-3 items-center hover:opacity-50 cursor-pointer py-2">
+                  <RiArrowRightSLine size="2rem" className="text-[#b9cdbb]" />
+                  <p className="text-[18px]">Covent Garden</p>
+                </div>
+              </div>
+            </div>
+          )}
+          {date && (
+            <div className="bg-[#f3ece2] p-6 hidden lg:flex flex-col gap-6 w-max relative">
+              <p className="text-[28px]">Choose your dates</p>
+              <div className="flex">
+                <div className="flex flex-col gap-y-8 gap-x-6 pl-8 pr-10 border-r border-black/20 pb-20">
+                  <p className="font-semibold text-center text-[14px]">
+                    February 2025
+                  </p>
+                  <div className="grid grid-cols-7 gap-6 text-[12px] text-[#2e2739]">
+                    <p>Mo</p>
+                    <p>Tu</p>
+                    <p>We</p>
+                    <p>Th</p>
+                    <p>Fr</p>
+                    <p>Sa</p>
+                    <p>Su</p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                    <p>4</p>
+                    <p>5</p>
+                    <p>6</p>
+                    <p>7</p>
+                    <p>8</p>
+                    <p>9</p>
+                    <p>10</p>
+                    <p>11</p>
+                    <p>12</p>
+                    <p>13</p>
+                    <p>14</p>
+                    <p>15</p>
+                    <p>16</p>
+                    <p>17</p>
+                    <p>18</p>
+                    <p>19</p>
+                    <p>20</p>
+                    <p>21</p>
+                    <p>22</p>
+                    <p>23</p>
+                    <p>24</p>
+                    <p>25</p>
+                    <p>26</p>
+                    <p>27</p>
+                    <p>28</p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-y-8 gap-x-6 pl-[2.75rem] pr-8 pb-10">
+                  <p className="font-semibold text-center text-[14px]">
+                    March 2025
+                  </p>
+                  <div className="grid grid-cols-7 gap-6 text-[12px] text-[#2e2739]">
+                    <p>Mo</p>
+                    <p>Tu</p>
+                    <p>We</p>
+                    <p>Th</p>
+                    <p>Fr</p>
+                    <p>Sa</p>
+                    <p>Su</p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                    <p>4</p>
+                    <p>5</p>
+                    <p>6</p>
+                    <p>7</p>
+                    <p>8</p>
+                    <p>9</p>
+                    <p>10</p>
+                    <p>11</p>
+                    <p>12</p>
+                    <p>13</p>
+                    <p>14</p>
+                    <p>15</p>
+                    <p>16</p>
+                    <p>17</p>
+                    <p>18</p>
+                    <p>19</p>
+                    <p>20</p>
+                    <p>21</p>
+                    <p>22</p>
+                    <p>23</p>
+                    <p>24</p>
+                    <p>25</p>
+                    <p>26</p>
+                    <p>27</p>
+                    <p>28</p>
+                    <p>29</p>
+                    <p>30</p>
+                    <p>31</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          {guests && (
+            <div className="bg-[#f3ece2] p-6 lg:flex flex-col gap-6 w-max relative hidden">
+              <div className="flex">
+                <div className="flex flex-col pr-5 gap-4 border-r border-black/20">
+                  <p className="text-[28px]">Apartments</p>
+                  <div className="flex justify-between gap-[8.5rem] items-center">
+                    <p className="text-[24px]">Total</p>
+                    <div className="bg-[#0000000a] rounded-[5rem] flex items-center justify-between">
+                      <GrSubtractCircle
+                        size="2.5rem"
+                        className="bg-transparent"
+                      />
+                      <p className="text-[14px] px-5">1</p>
+                      <FiPlusCircle
+                        size="2.5rem"
+                        className="bg-[#f3ece2] rounded-full"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col pl-5 gap-4">
+                  <p className="text-[28px]">Guests</p>
+                  <div className="flex justify-between items-center gap-5 border-b border-black/30 py-2">
+                    <div>
+                      <p className="text-[24px]">Adults</p>
+                      <p className="text-[20px]">Ages 18 and above</p>
+                    </div>
+                    <div className="bg-[#0000000a] rounded-[5rem] flex items-center justify-between">
+                      <GrSubtractCircle
+                        size="2.5rem"
+                        className="bg-transparent"
+                      />
+                      <p className="text-[14px] px-5">1</p>
+                      <FiPlusCircle
+                        size="2.5rem"
+                        className="bg-[#f3ece2] rounded-full"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center gap-5 border-b border-black/30 py-2">
+                    <div>
+                      <p className="text-[24px]">Teens</p>
+                      <p className="text-[20px]">Ages 13 and 17</p>
+                    </div>
+                    <div className="bg-[#0000000a] rounded-[5rem] flex items-center justify-between">
+                      <GrSubtractCircle
+                        size="2.5rem"
+                        className="bg-transparent"
+                      />
+                      <p className="text-[14px] px-5">1</p>
+                      <FiPlusCircle
+                        size="2.5rem"
+                        className="bg-[#f3ece2] rounded-full"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center gap-5 border-b border-black/30 py-2">
+                    <div>
+                      <p className="text-[24px]">Children</p>
+                      <p className="text-[20px]">Ages 3-12</p>
+                    </div>
+                    <div className="bg-[#0000000a] rounded-[5rem] flex items-center justify-between">
+                      <GrSubtractCircle
+                        size="2.5rem"
+                        className="bg-transparent"
+                      />
+                      <p className="text-[14px] px-5">1</p>
+                      <FiPlusCircle
+                        size="2.5rem"
+                        className="bg-[#f3ece2] rounded-full"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center gap-5 py-2">
+                    <div>
+                      <p className="text-[24px]">Infants</p>
+                      <p className="text-[20px]">Ages 2 and below</p>
+                    </div>
+                    <div className="bg-[#0000000a] rounded-[5rem] flex items-center justify-between">
+                      <GrSubtractCircle
+                        size="2.5rem"
+                        className="bg-transparent"
+                      />
+                      <p className="text-[14px] px-5">1</p>
+                      <FiPlusCircle
+                        size="2.5rem"
+                        className="bg-[#f3ece2] rounded-full"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         <SideBar toggle={toggle} setToggle={setToggle} />
       </header>
@@ -239,18 +561,17 @@ export default function Home() {
             </section>
           )}
           <section className="bg-[#ebe0ce] flex flex-col gap-8 lg:gap-0">
-            <Reviews
-              openReviews={openReviews}
-              setOpenReviews={setOpenReviews}
-              viewPhotos={viewPhotos}
-              setViewPhotos={setViewPhotos}
-            />
-            <Reviews
-              openReviews={openReviews}
-              setOpenReviews={setOpenReviews}
-              viewPhotos={viewPhotos}
-              setViewPhotos={setViewPhotos}
-            />
+            {data.map((e, i) => (
+              <Reviews
+                key={i}
+                data={e}
+                index={i}
+                openReviews={openReviews}
+                setOpenReviews={setOpenReviews}
+                viewPhotos={viewPhotos}
+                setViewPhotos={setViewPhotos}
+              />
+            ))}
           </section>
           <section className="lg:pt-32 bg-[#ebe0ce]">
             <Map />
@@ -261,10 +582,10 @@ export default function Home() {
           <section>
             <Membership />
           </section>
-          <section className="bg-[#f3ece2] py-[10rem] px-4 md:px-[2rem] lg:px-[7rem] xl:px-[12rem] grid grid-cols-2 md:flex md:justify-between gap-4 lg:gap-12 items-center">
+          <section className="bg-[#f3ece2] py-[10rem] px-4 md:px-[2rem] lg:px-[5rem] xl:px-[8rem] grid grid-cols-2 md:flex md:justify-between gap-4 lg:gap-8 items-center">
             <div className="flex flex-col items-center gap-4 text-center">
               <img
-                src="/images/12.webp"
+                src="/images/87756295-d694-4086-b693-f36422aa55d4.svg"
                 alt="Amenity icons"
                 className="w-[60px] h-[60px]"
               />
@@ -275,35 +596,39 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center gap-4 text-center">
               <img
-                src="/images/12.webp"
+                src="/images/50c129ac-7a34-41d2-abed-851de0e208a3.svg"
                 alt="Amenity icons"
                 className="w-[60px] h-[60px]"
               />
-              <p className="italic text-[20px] lg:text-[28px]">How wonderful</p>
+              <p className="italic text-[20px] lg:text-[28px]">
+                Forever flexible
+              </p>
+              <p className="lg:text-[1.20rem]">
+                Enjoy flexible booking and free cancellation options
+              </p>
+            </div>
+            <div className="flex flex-col items-center gap-4 text-center">
+              <img
+                src="/images/a81d65b9-094d-45d5-b330-a7105fb49db5.svg"
+                alt="Amenity icons"
+                className="w-[60px] h-[60px]"
+              />
+              <p className="italic text-[20px] lg:text-[28px]">
+                At your service
+              </p>
+              <p className="lg:text-[1.20rem]">
+                Our reception team are on hand to make your wish a reality
+              </p>
+            </div>
+            <div className="flex flex-col items-center gap-4 text-center">
+              <img
+                src="/images/1e7bcb6e-7b7c-4f99-82b8-e98a22d30ab6.svg"
+                alt="Amenity icons"
+                className="w-[60px] h-[60px]"
+              />
+              <p className="italic text-[20px] lg:text-[28px]">Stay longer</p>
               <p className="lg:text-[1.20rem]">
                 Relish 20% off stays over 7 nights
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-4 text-center">
-              <img
-                src="/images/12.webp"
-                alt="Amenity icons"
-                className="w-[60px] h-[60px]"
-              />
-              <p className="italic text-[20px] lg:text-[28px]">How wonderful</p>
-              <p className="lg:text-[1.20rem]">
-                We delight our members with 10% off all stays
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-4 text-center">
-              <img
-                src="/images/12.webp"
-                alt="Amenity icons"
-                className="w-[60px] h-[60px]"
-              />
-              <p className="italic text-[20px] lg:text-[28px]">How wonderful</p>
-              <p className="lg:text-[1.20rem]">
-                We delight our members with 10% off all stays
               </p>
             </div>
           </section>

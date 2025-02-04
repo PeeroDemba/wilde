@@ -22,11 +22,11 @@ body {
   bottom: 2rem !important;
 }
 
-.carousel-container-custom-three .react-multi-carousel-dot-list {
+/* .carousel-container-custom-three .react-multi-carousel-dot-list {
   bottom: -17rem !important;
-}
+} */
 
-@media (min-width: 640px) {
+/* @media (min-width: 640px) {
   .carousel-container-custom-three .react-multi-carousel-dot-list {
     bottom: -21rem !important;
   }
@@ -60,7 +60,7 @@ body {
   .carousel-container-custom-three .react-multi-carousel-dot-list {
     bottom: -5rem !important;
   }
-}
+} */
 
 .carousel-container-custom {
   height: 60vh !important;

@@ -53,7 +53,7 @@ function Favourites() {
           <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
-              src="/images/wilde_ls_1.webp"
+              src="/images/daniel-faro_dts-greece_r1-08377-0002_highres.webp"
               alt="Room 2"
               className="object-cover h-3/5 w-full rounded-md"
             />
@@ -70,7 +70,7 @@ function Favourites() {
           <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
-              src="/images/wilde_ls_23a.webp"
+              src="/images/dts_movement_daniel_farC3B2_photos_id7204.webp"
               alt="Room 2"
               className="object-cover h-3/5 w-full rounded-md"
             />
@@ -87,7 +87,7 @@ function Favourites() {
           <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
-              src="/images/wilde_ls_0.webp"
+              src="/images/dts_daniel_faro_dinner_party_020.webp"
               alt="Room 2"
               className="object-cover h-3/5 w-full rounded-md"
             />
@@ -104,7 +104,7 @@ function Favourites() {
           <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
-              src="/images/wilde_ls_1.webp"
+              src="/images/alternative-london.webp"
               alt="Room 2"
               className="object-cover h-3/5 w-full rounded-md"
             />
@@ -121,24 +121,7 @@ function Favourites() {
           <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
             <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
             <img
-              src="/images/wilde_ls_0.webp"
-              alt="Room 2"
-              className="object-cover h-3/5 w-full rounded-md"
-            />
-            <div className="relative">
-              <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
-              <p className="lg:text-[2rem] text-[1.75rem] leading-[36px]">
-                <span> Discovering London's Liverpool Street </span>
-                <span>
-                  <HiArrowTopRightOnSquare size="1rem" className="inline" />
-                </span>
-              </p>
-            </div>
-          </div>
-          <div className="flex h-[50rem] justify-start group flex-col relative gap-6 cursor-pointer mr-8">
-            <div className="absolute top-0 left-0 h-full w-full group-hover:bg-[#c4673c62] bg-transparent"></div>
-            <img
-              src="/images/wilde_ls_23a.webp"
+              src="/images/23-09-29-_london_amandafordyce_0603_final_web.webp"
               alt="Room 2"
               className="object-cover h-3/5 w-full rounded-md"
             />

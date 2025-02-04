@@ -3,6 +3,7 @@ import { IoMdPlay } from "react-icons/io";
 import { MdCancel } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { data } from "../data.ts";
 
 const responsive = {
   desktop: {
@@ -17,8 +18,10 @@ const responsive = {
 
 function ReviewImageCarousel({
   setImageCarousel,
+  index,
 }: {
   setImageCarousel: React.Dispatch<React.SetStateAction<boolean>>;
+  index: number;
 }) {
   return (
     <section className="bg-[#ebe0ce] fixed top-0 left-0 w-full h-full lg:px-4 lg:py-16 z-[9999]">
@@ -32,7 +35,7 @@ function ReviewImageCarousel({
           }}
         />
         <p className="fixed top-[4.5rem]">
-          {3} / {62}
+          {2} / {data[index].images.length * 2}
         </p>
         <MdCancel
           tabIndex={0}
@@ -46,8 +49,8 @@ function ReviewImageCarousel({
       </div>
       <div className="md:mt-[10rem] lg:mt-0">
         <Carousel
-          swipeable={false}
-          draggable={false}
+          swipeable={true}
+          draggable={true}
           showDots={true}
           responsive={responsive}
           ssr={false}
@@ -63,7 +66,7 @@ function ReviewImageCarousel({
         >
           <div className="w-full flex justify-center group relative items-end lg:items-center">
             <img
-              src="/images/wilde_ls_23a.webp"
+              src={data[index].images[0]}
               alt="Room 1"
               className="lg:w-2/3 w-full"
             />
@@ -73,119 +76,35 @@ function ReviewImageCarousel({
           </div>
           <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
             <img
-              src="/images/wilde_ls_1.webp"
+              src={data[index].images[1]}
               alt="Room 2"
               className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
             />
           </div>
           <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
             <img
-              src="/images/wilde_ls_0.webp"
+              src={data[index].images[2]}
               alt="Room 3"
               className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
             />
           </div>
           <div className="w-full flex justify-center items-end lg:items-center">
             <img
-              src="/images/wilde_ls_23a.webp"
+              src={data[index].images[0]}
               alt="Room 1"
               className="object-cover h-full lg:w-2/3 w-full"
             />
           </div>
           <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
             <img
-              src="/images/wilde_ls_1.webp"
+              src={data[index].images[1]}
               alt="Room 2"
               className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
             />
           </div>
           <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
             <img
-              src="/images/wilde_ls_0.webp"
-              alt="Room 3"
-              className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_23a.webp"
-              alt="Room 1"
-              className="object-cover h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_1.webp"
-              alt="Room 2"
-              className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_0.webp"
-              alt="Room 3"
-              className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_23a.webp"
-              alt="Room 1"
-              className="object-cover h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_1.webp"
-              alt="Room 2"
-              className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_0.webp"
-              alt="Room 3"
-              className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_23a.webp"
-              alt="Room 1"
-              className="object-cover h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_1.webp"
-              alt="Room 2"
-              className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_0.webp"
-              alt="Room 3"
-              className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_23a.webp"
-              alt="Room 1"
-              className="object-cover h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_1.webp"
-              alt="Room 2"
-              className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
-            />
-          </div>
-          <div className="w-full h-[67vh] flex justify-center items-end lg:items-center">
-            <img
-              src="/images/wilde_ls_0.webp"
+              src={data[index].images[2]}
               alt="Room 3"
               className="object-cover h-4/5 lg:h-full lg:w-2/3 w-full"
             />

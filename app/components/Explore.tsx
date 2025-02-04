@@ -43,11 +43,11 @@ function Explore() {
           </div>
           <div className="flex flex-col justify-between gap-12 md:gap-24">
             <p className="italic text-[1.5rem]">Flexible booking</p>
-            <div className="border-2 border-black"></div>
+            <img src="/images/wilde-underline.svg" alt="Underline" />
           </div>
           <div className="flex flex-col justify-between gap-12 md:gap-24">
             <p className="italic text-[1.5rem]">Fitness room</p>
-            <div className="border-2 border-black"></div>
+            <img src="/images/wilde-underline.svg" alt="Underline" />
           </div>
           <div className="lg:w-full flex justify-center items-center w-full">
             <img
@@ -58,11 +58,11 @@ function Explore() {
           </div>
           <div className="flex flex-col justify-between gap-12 md:gap-24">
             <p className="italic text-[1.5rem]">Breakfast & bar</p>
-            <div className="border-2 border-black"></div>
+            <img src="/images/wilde-underline.svg" alt="Underline" />
           </div>
           <div className="flex flex-col justify-between gap-12 md:gap-24">
             <p className="italic text-[1.5rem]">Premium toiletries</p>
-            <div className="border-2 border-black"></div>
+            <img src="/images/wilde-underline.svg" alt="Underline" />
           </div>
           <div className="lg:w-full flex justify-center items-center w-full">
             <img
@@ -73,15 +73,15 @@ function Explore() {
           </div>
           <div className="flex flex-col justify-between gap-12 md:gap-24">
             <p className="italic text-[1.5rem]">Free highspeed wi-fi</p>
-            <div className="border-2 border-black"></div>
+            <img src="/images/wilde-underline.svg" alt="Underline" />
           </div>
           <div className="flex flex-col justify-between gap-12 md:gap-24">
             <p className="italic text-[1.5rem]">Laundry room</p>
-            <div className="border-2 border-black"></div>
+            <img src="/images/wilde-underline.svg" alt="Underline" />
           </div>
           <div className="flex flex-col justify-between gap-12 md:gap-24">
             <p className="italic text-[1.5rem]">Nespresso machines</p>
-            <div className="border-2 border-black"></div>
+            <img src="/images/wilde-underline.svg" alt="Underline" />
           </div>
         </div>
         <div className="flex justify-center px-4 md:px-12">

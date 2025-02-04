@@ -5,7 +5,6 @@ import ReviewsList from "./ReviewsList";
 import ViewImages from "./ViewImages";
 import ReviewImageCarousel from "./ReviewImageCarousel";
 import { useState } from "react";
-import { RiArrowRightSLine } from "react-icons/ri";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -21,24 +20,38 @@ function Reviews({
   setOpenReviews,
   viewPhotos,
   setViewPhotos,
+  data,
+  index,
 }: {
   openReviews: boolean;
   setOpenReviews: React.Dispatch<React.SetStateAction<boolean>>;
   viewPhotos: boolean;
   setViewPhotos: React.Dispatch<React.SetStateAction<boolean>>;
+  data: {
+    name: string;
+    stars: string;
+    reviews: string;
+    images: string[];
+    expand: string[];
+    amenities: {
+      title: string;
+      image: string;
+    }[];
+  };
+  index: number;
 }) {
   const [imageCarousel, setImageCarousel] = useState(false);
   const [show, setShow] = useState(false);
-  const [count, setCount] = useState(6);
+  const [count, setCount] = useState(5);
 
   return (
-    <section className="lg:bg-[#ebe0ce] bg-[#f3ece2] pt-16 xl:px-[12rem] px-0 md:px-[5rem] lg:px-[7rem] lg:border-none border-t border-b py-[5rem] lg:py-0 border-black/30">
+    <section className="lg:bg-[#ebe0ce] bg-[#f3ece2] mt-8 pt-16 xl:px-[12rem] px-0 md:px-[5rem] lg:px-[7rem] lg:border-none border-t border-b py-[5rem] lg:py-0 border-black/30">
       <div className="flex justify-between lg:flex-row flex-col lg:items-center mb-10 px-4 md:px-0">
         <p
           tabIndex={0}
           className="lg:text-[40px] text-[25px] cursor-pointer hover:text-[#3e6545]"
         >
-          Wilde Aparthotels, London, Liverpool Street
+          {data.name}
         </p>
         <div
           tabIndex={0}
@@ -49,10 +62,10 @@ function Reviews({
         >
           <div className="flex items-center gap-2">
             <FaStar />
-            <p>4.5 Excellent</p>
+            <p>{data.stars} Excellent</p>
           </div>
           <p className="underline decoration-2 underline-offset-2">
-            (35 Reviews)
+            ({data.reviews} Reviews)
           </p>
         </div>
       </div>
@@ -75,11 +88,7 @@ function Reviews({
             tabIndex={0}
             className="group rounded-none md:rounded-tl-md md:rounded-bl-md h-full bg-no-repeat bg-cover flex justify-center items-center cursor-pointer"
           >
-            <img
-              src="/images/wilde_ls_23a.webp"
-              alt=""
-              className="w-full h-full"
-            />
+            <img src={data.images[0]} alt="" className="w-full h-full" />
             <div className="p-8 flex justify-center items-center group-hover:bg-black/80 absolute rounded-full bg-black/40">
               <IoMdPlay size="4rem" className="pl-1 text-[#eee]" />
             </div>
@@ -91,7 +100,7 @@ function Reviews({
             tabIndex={0}
             className="rounded-tr-md h-1/2 bg-no-repeat bg-center cursor-pointer"
           >
-            <img src="/images/wilde_ls_1.webp" alt="" className="w-full" />
+            <img src={data.images[1]} alt="" className="w-full" />
             <div className="w-full h-full hover:bg-black/30"></div>
           </div>
           <div
@@ -101,28 +110,38 @@ function Reviews({
             tabIndex={0}
             className="rounded-br-md h-1/2 bg-no-repeat bg-center cursor-pointer"
           >
-            <img src="/images/wilde_ls_0.webp" alt="" className="w-full" />
+            <img src={data.images[2]} alt="" className="w-full" />
             <div className="w-full relative h-full hover:bg-black/30"></div>
           </div>
         </Carousel>
       </div>
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-[60%_40%] gap-[0.5rem] h-[300px] md:h-[400px] mb-16">
+      <div className="hidden md:flex gap-[0.5rem] mb-16 max-h-[40rem]">
         <div
           tabIndex={0}
-          className="bg-[url('/images/wilde_ls_23a.webp')] group rounded-none md:rounded-tl-md md:rounded-bl-md h-full bg-no-repeat bg-cover flex justify-center items-center cursor-pointer"
+          className="relative w-[60%] max-h-full group rounded-none md:rounded-tl-md md:rounded-bl-md flex justify-center items-center cursor-pointer"
         >
-          <div className="p-8 flex justify-center items-center group-hover:bg-black/80 rounded-full bg-black/40">
+          <img
+            src={data.images[0]}
+            alt=""
+            className="object-cover w-full h-full"
+          />
+          <div className="p-8 flex justify-center items-center group-hover:bg-black/80 rounded-full absolute top-[calc(50%-64px)] left-[calc(50%-64px)] bg-black/40">
             <IoMdPlay size="4rem" className="pl-1 text-[#eee]" />
           </div>
         </div>
-        <div className="md:flex flex-col gap-2 hidden">
+        <div className="md:flex flex-col gap-2 hidden max-h-full w-[40%]">
           <div
             onClick={() => {
               setImageCarousel(true);
             }}
             tabIndex={0}
-            className="bg-[url('/images/wilde_ls_1.webp')] rounded-tr-md h-1/2 bg-no-repeat bg-center cursor-pointer"
+            className="rounded-tr-md cursor-pointer h-[calc(50%-4px)]"
           >
+            <img
+              src={data.images[1]}
+              alt=""
+              className="w-full h-full object-cover"
+            />
             <div className="w-full h-full hover:bg-black/30"></div>
           </div>
           <div
@@ -130,28 +149,36 @@ function Reviews({
               setImageCarousel(true);
             }}
             tabIndex={0}
-            className="bg-[url('/images/wilde_ls_0.webp')] rounded-br-md h-1/2 bg-no-repeat bg-center cursor-pointer"
+            className="relative h-[calc(50%-4px)] rounded-br-md cursor-pointer"
           >
-            <div className="w-full relative h-full hover:bg-black/30">
+            <img
+              src={data.images[2]}
+              alt=""
+              className="h-full object-cover w-full"
+            />
+            <div className="w-full relative hover:bg-black/30">
               <div
                 onClickCapture={() => {
-                  setViewPhotos(true);
                   setImageCarousel(false);
+                  setViewPhotos(true);
                 }}
                 tabIndex={0}
                 className="absolute focus-visible:outline-white focus-visible:outline-1 bottom-6 hover:bg-slate-900 right-[5%] rounded-[5rem] bg-[#273f2bb3] px-3 py-1 flex gap-2 items-center text-white"
               >
                 <MdOutlineImage />
-                <p>View all photos (62)</p>
+                <p>View all photos (6)</p>
               </div>
             </div>
           </div>
         </div>
       </div>
       {openReviews && <ReviewsList setOpenReviews={setOpenReviews} />}
-      {viewPhotos && <ViewImages setViewPhotos={setViewPhotos} />}
+      {viewPhotos && <ViewImages index={index} setViewPhotos={setViewPhotos} />}
       {imageCarousel && (
-        <ReviewImageCarousel setImageCarousel={setImageCarousel} />
+        <ReviewImageCarousel
+          index={index}
+          setImageCarousel={setImageCarousel}
+        />
       )}
       <div className="flex md:flex-row flex-col justify-between px-4 md:px-0">
         <div
@@ -166,18 +193,12 @@ function Reviews({
           <p className="border-l border-black/30 pl-3">View all photos (62)</p>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2 text-[20px]">
-            <RiArrowRightSLine size="1.5rem" />
-            <p>5 min walk to Liverpool Street Station</p>
-          </div>
-          <div className="flex items-center gap-2 text-[20px]">
-            <RiArrowRightSLine size="1.5rem" />
-            <p>Studio & 1 bedroom apartments</p>
-          </div>
-          <div className="flex items-center gap-2 text-[20px]">
-            <RiArrowRightSLine size="1.5rem" />
-            <p>Spitalfields & Shoreditch 10 min walk</p>
-          </div>
+          {data.expand.map((e, i) => (
+            <div key={i} className="flex items-center gap-4 text-[20px]">
+              <img src="/images/arrow.svg" alt="Right Arrow" />
+              <p>{e}</p>
+            </div>
+          ))}
         </div>
         <div className="hidden lg:block">
           <button
@@ -191,16 +212,22 @@ function Reviews({
       <div className="mt-12 lg:border-b lg:border-black/25 px-4 md:px-0">
         <p className="italic text-[1.5rem] mb-8">Amenities</p>
         <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 md:gap-12">
-          {Array.from({ length: count }).map((_, i) => (
-            <div className="flex flex-col gap-4" key={i}>
-              <img
-                src="/images/12.webp"
-                alt="Amenity icons"
-                className="w-[60px] h-[60px]"
-              />
-              <p className="text-[1rem]">Breakfast</p>
-            </div>
-          ))}
+          {data.amenities
+            .filter((_, i) => {
+              if (i <= count) {
+                return true;
+              }
+            })
+            .map((e, i) => (
+              <div key={i} className="flex flex-col gap-4">
+                <img
+                  src={`/images/${e.image}`}
+                  alt="Amenity icons"
+                  className="w-[60px] h-[60px]"
+                />
+                <p className="text-[1rem]">{e.title}</p>
+              </div>
+            ))}
         </div>
         {show ? (
           <div className="flex justify-center lg:justify-start">
@@ -208,7 +235,7 @@ function Reviews({
               type="button"
               onClick={() => {
                 setShow(false);
-                setCount(6);
+                setCount(5);
               }}
               tabIndex={0}
               className="bg-[#d1c7b6] rounded-[5rem] py-1 px-4 mt-16 lg:mb-24 mb-16"
@@ -222,12 +249,12 @@ function Reviews({
               type="button"
               onClick={() => {
                 setShow(true);
-                setCount(9);
+                setCount(data.amenities.length);
               }}
               tabIndex={0}
               className="bg-[#d1c7b6] rounded-[5rem] py-1 px-4 mt-16 lg:mb-24 mb-16"
             >
-              Show all (9)
+              Show all ({data.amenities.length})
             </button>
           </div>
         )}
